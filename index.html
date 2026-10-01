@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>LUCENT FC | Official Football Club</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #07090d;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 7%;
+      background: rgba(7, 9, 13, 0.95);
+      border-bottom: 1px solid #20252d;
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #00e676;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav a {
+      color: #b9c0ca;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00e676;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      padding: 90px 7%;
+      position: relative;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 80% 25%,
+          rgba(0, 230, 118, 0.17),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 20% 80%,
+          rgba(0, 230, 118, 0.08),
+          transparent 35%
+        ),
+        #07090d;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .tag {
+      display: inline-block;
+      color: #00e676;
+      border: 1px solid #00e676;
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(60px, 12vw, 135px);
+      line-height: 0.88;
+      font-weight: 900;
+      letter-spacing: -6px;
+    }
+
+    .hero h1 span {
+      color: #00e676;
+    }
+
+    .hero p {
+      color: #aab1bc;
+      font-size: 18px;
+      max-width: 570px;
+      margin: 30px 0;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 25px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .primary {
+      background: #00e676;
+      color: #06100a;
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 230, 118, 0.25);
+    }
+
+    .secondary {
+      border: 1px solid #343a45;
+      color: white;
+    }
+
+    .secondary:hover {
+      border-color: #00e676;
+      color: #00e676;
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid #20252d;
+      border-bottom: 1px solid #20252d;
+      background: #0c0f14;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 35px 15px;
+      border-right: 1px solid #20252d;
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat h2 {
+      color: #00e676;
+      font-size: 38px;
+    }
+
+    .stat p {
+      color: #858d99;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-title {
+      margin-bottom: 50px;
+    }
+
+    .section-title small {
+      color: #00e676;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+
+    .section-title h2 {
+      font-size: 48px;
+      margin-top: 8px;
+    }
+
+    .section-title p {
+      color: #858d99;
+      margin-top: 10px;
+    }
+
+    /* SQUAD */
+
+    .position {
+      margin-bottom: 60px;
+    }
+
+    .position-title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .position-title h3 {
+      font-size: 21px;
+      white-space: nowrap;
+    }
+
+    .line {
+      height: 1px;
+      background: #242a33;
+      flex: 1;
+    }
+
+    .players {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .player {
+      background: linear-gradient(
+        145deg,
+        #11151c,
+        #0a0d12
+      );
+
+      border: 1px solid #202630;
+      border-radius: 14px;
+      padding: 30px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      position: relative;
+      overflow: hidden;
+
+      transition: 0.3s;
+    }
+
+    .player::after {
+      content: "";
+      position: absolute;
+
+      width: 120px;
+      height: 120px;
+
+      right: -40px;
+      bottom: -50px;
+
+      background: #00e676;
+      opacity: 0.06;
+
+      border-radius: 50%;
+    }
+
+    .player:hover {
+      transform: translateY(-5px);
+      border-color: #00e676;
+    }
+
+    .player-info h4 {
+      font-size: 24px;
+    }
+
+    .player-info p {
+      color: #00e676;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 5px;
+    }
+
+    .player-number {
+      font-size: 46px;
+      font-weight: 900;
+      color: #202630;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: #0c0f14;
+    }
+
+    .about-box {
+      max-width: 850px;
+    }
+
+    .about-box p {
+      color: #aeb5bf;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 45px 7%;
+      border-top: 1px solid #20252d;
+      background: #05070a;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    footer strong {
+      letter-spacing: 2px;
+    }
+
+    footer p {
+      color: #626a76;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      nav ul {
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 10px;
+      }
+
+      .hero {
+        min-height: 570px;
+        padding: 70px 5%;
+      }
+
+      .hero h1 {
+        font-size: 67px;
+        letter-spacing: -4px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        border-right: none;
+        border-bottom: 1px solid #20252d;
+      }
+
+      .stat:last-child {
+        border-bottom: none;
+      }
+
+      section {
+        padding: 65px 5%;
+      }
+
+      .section-title h2 {
+        font-size: 38px;
+      }
+
+      .players {
+        grid-template-columns: 1fr;
+      }
+
+      .player {
+        padding: 25px;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+
+    <div class="logo">
+      LUCENT<span>FC</span>
+    </div>
+
+    <ul>
+      <li>
+        <a href="#home">HOME</a>
+      </li>
+
+      <li>
+        <a href="#squad">SQUAD</a>
+      </li>
+
+      <li>
+        <a href="#about">CLUB</a>
+      </li>
+    </ul>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="tag">
+        EST. 2026 • FOOTBALL CLUB
+      </div>
+
+      <h1>
+        LUCENT<br>
+        <span>FC.</span>
+      </h1>
+
+      <p>
+        More than a team. A club built on ambition,
+        teamwork, discipline and the desire to win together.
+      </p>
+
+      <div class="buttons">
+
+        <a
+          href="#squad"
+          class="btn primary"
+        >
+          MEET THE SQUAD
+        </a>
+
+        <a
+          href="#about"
+          class="btn secondary"
+        >
+          ABOUT THE CLUB
+        </a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- STATS -->
+
+  <div class="stats">
+
+    <div class="stat">
+
+      <h2>06</h2>
+
+      <p>
+        First Team Players
+      </p>
+
+    </div>
+
+
+    <div class="stat">
+
+      <h2>03</h2>
+
+      <p>
+        Positions
+      </p>
+
+    </div>
+
+
+    <div class="stat">
+
+      <h2>01</h2>
+
+      <p>
+        Club
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- SQUAD -->
+
+  <section id="squad">
+
+    <div class="section-title">
+
+      <small>
+        THE TEAM
+      </small>
+
+      <h2>
+        FIRST TEAM
+      </h2>
+
+      <p>
+        Meet the players representing LUCENT FC.
+      </p>
+
+    </div>
+
+
+    <!-- STRIKERS -->
+
+    <div class="position">
+
+      <div class="position-title">
+
+        <h3>
+          STRIKERS
+        </h3>
+
+        <div class="line"></div>
+
+      </div>
+
+
+      <div class="players">
+
+        <div class="player">
+
+          <div class="player-info">
+
+            <h4>
+              Zarak
+            </h4>
+
+            <p>
+              Striker
+            </p>
+
+          </div>
+
+          <div class="player-number">
+            09
+          </div>
+
+        </div>
+
+
+        <div class="player">
+
+          <div class="player-info">
+
+            <h4>
+              Imaad
+            </h4>
+
+            <p>
+              Striker
+            </p>
+
+          </div>
+
+          <div class="player-number">
+            10
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- DEFENDERS -->
+
+    <div class="position">
+
+      <div class="position-title">
+
+        <h3>
+          DEFENDERS
+        </h3>
+
+        <div class="line"></div>
+
+      </div>
+
+
+      <div class="players">
+
+        <div class="player">
+
+          <div class="player-info">
+
+            <h4>
+              Zalan
+            </h4>
+
+            <p>
+              Defender
+            </p>
+
+          </div>
+
+          <div class="player-number">
+            04
+          </div>
+
+        </div>
+
+
+        <div class="player">
+
+          <div class="player-info">
+
+            <h4>
+              Uzair
+            </h4>
+
+            <p>
+              Defender
+            </p>
+
+          </div>
+
+          <div class="player-number">
+            05
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- GOALKEEPERS -->
+
+    <div class="position">
+
+      <div class="position-title">
+
+        <h3>
+          GOALKEEPERS
+        </h3>
+
+        <div class="line"></div>
+
+      </div>
+
+
+      <div class="players">
+
+        <div class="player">
+
+          <div class="player-info">
+
+            <h4>
+              Abdullah
+            </h4>
+
+            <p>
+              Goalkeeper
+            </p>
+
+          </div>
+
+          <div class="player-number">
+            01
+          </div>
+
+        </div>
+
+
+        <div class="player">
+
+          <div class="player-info">
+
+            <h4>
+              Zakriya
+            </h4>
+
+            <p>
+              Goalkeeper
+            </p>
+
+          </div>
+
+          <div class="player-number">
+            12
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section
+    class="about"
+    id="about"
+  >
+
+    <div class="section-title">
+
+      <small>
+        THE CLUB
+      </small>
+
+      <h2>
+        BUILT TOGETHER.
+      </h2>
+
+    </div>
+
+
+    <div class="about-box">
+
+      <p>
+        LUCENT FC is a football club driven by
+        teamwork, discipline and ambition.
+      </p>
+
+      <p>
+        Every player has a role. Every match is
+        an opportunity. Together, we represent
+        the spirit of LUCENT FC.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <strong>
+      LUCENT FC
+    </strong>
+
+    <p>
+      © 2026 LUCENT FC. All rights reserved.
+    </p>
+
+  </footer>
+
+</body>
+</html>
