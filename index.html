@@ -1,543 +1,603 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>LUCENT FC | Official Football Club</title><meta name="description" content="Official website of LUCENT FC — Football, passion and ambition."><style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-  <title>LUCENT FC | Official Football Club</title>
+html {
+    scroll-behavior: smooth;
+}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050706;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* ================= NAVBAR ================= */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(5, 7, 6, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    color: #45e879;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #45e879;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 30%, rgba(42, 207, 105, 0.18), transparent 35%),
+        linear-gradient(135deg, #050706, #09120d 55%, #050706);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(69,232,121,0.15);
+    border-radius: 50%;
+    animation: pulse 5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%,100% {
+        transform: scale(1);
+        opacity: .4;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: .8;
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid rgba(69,232,121,0.4);
+    border-radius: 50px;
+    color: #45e879;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 12vw, 120px);
+    line-height: .9;
+    letter-spacing: -5px;
+    font-weight: 950;
+}
+
+.hero h1 span {
+    color: #45e879;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 30px auto;
+    color: #a9b0ab;
+    font-size: 18px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: #45e879;
+    color: #041007;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(69,232,121,.2);
+}
+
+.btn-secondary {
+    border: 1px solid #333;
+    color: white;
+}
+
+.btn-secondary:hover {
+    border-color: #45e879;
+    color: #45e879;
+}
+
+/* ================= GENERAL ================= */
+
+section {
+    padding: 100px 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section-title {
+    margin-bottom: 45px;
+}
+
+.section-title small {
+    color: #45e879;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.section-title h2 {
+    font-size: clamp(35px, 6vw, 60px);
+    margin-top: 8px;
+}
+
+.section-title p {
+    color: #929994;
+    margin-top: 10px;
+}
+
+/* ================= STATS ================= */
+
+.stats {
+    background: #080b09;
+    border-top: 1px solid #151915;
+    border-bottom: 1px solid #151915;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat {
+    text-align: center;
+    padding: 25px;
+}
+
+.stat h3 {
+    font-size: 42px;
+    color: #45e879;
+}
+
+.stat p {
+    color: #888f8a;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* ================= SQUAD ================= */
+
+.squad {
+    background: #050706;
+}
+
+.position {
+    margin-bottom: 55px;
+}
+
+.position-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.position-title h3 {
+    font-size: 22px;
+}
+
+.position-title span {
+    color: #45e879;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.players {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.player {
+    position: relative;
+    min-height: 180px;
+    padding: 25px;
+    border: 1px solid #1a201c;
+    border-radius: 15px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #0b100d, #080b09);
+    transition: .3s;
+}
+
+.player:hover {
+    transform: translateY(-5px);
+    border-color: rgba(69,232,121,.5);
+    box-shadow: 0 15px 40px rgba(0,0,0,.3);
+}
+
+.player-number {
+    position: absolute;
+    right: 18px;
+    bottom: -12px;
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(255,255,255,.035);
+}
+
+.player-role {
+    color: #45e879;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.player h4 {
+    margin-top: 10px;
+    font-size: 28px;
+}
+
+.player p {
+    color: #777f79;
+    font-size: 13px;
+}
+
+/* ================= CLUB ================= */
+
+.club {
+    background: #080b09;
+}
+
+.club-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.club-text p {
+    color: #9ba29d;
+    margin-bottom: 18px;
+}
+
+.club-box {
+    border: 1px solid #1a201c;
+    border-radius: 18px;
+    padding: 35px;
+    background: #050706;
+}
+
+.club-box h3 {
+    color: #45e879;
+    margin-bottom: 20px;
+}
+
+.club-list {
+    list-style: none;
+}
+
+.club-list li {
+    padding: 13px 0;
+    border-bottom: 1px solid #151915;
+    color: #b5bbb7;
+}
+
+.club-list li:last-child {
+    border-bottom: none;
+}
+
+/* ================= FIXTURES ================= */
+
+.fixtures {
+    background: #050706;
+}
+
+.match {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+    margin-bottom: 15px;
+    border: 1px solid #1a201c;
+    border-radius: 12px;
+    background: #080b09;
+}
+
+.match-date {
+    color: #45e879;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.match-teams {
+    font-weight: bold;
+}
+
+.match-status {
+    color: #777;
+    font-size: 12px;
+}
+
+/* ================= NEWS ================= */
+
+.news {
+    background: #080b09;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.news-card {
+    border: 1px solid #1a201c;
+    border-radius: 15px;
+    padding: 28px;
+    background: #050706;
+    transition: .3s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    border-color: #45e879;
+}
+
+.news-card small {
+    color: #45e879;
+    font-weight: bold;
+}
+
+.news-card h3 {
+    margin: 15px 0;
+}
+
+.news-card p {
+    color: #858d88;
+    font-size: 14px;
+}
+
+/* ================= CTA ================= */
+
+.cta {
+    text-align: center;
+    padding: 110px 20px;
+    background:
+        radial-gradient(circle at center, rgba(69,232,121,.13), transparent 45%),
+        #050706;
+}
+
+.cta h2 {
+    font-size: clamp(40px, 7vw, 75px);
+    margin-bottom: 15px;
+}
+
+.cta p {
+    color: #8c938e;
+    margin-bottom: 30px;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    border-top: 1px solid #151915;
+    background: #030504;
+    padding: 40px 20px;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.footer-logo span {
+    color: #45e879;
+}
+
+footer p {
+    color: #666d68;
+    font-size: 12px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 750px) {
+
+    .nav-links {
+        display: none;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #07090d;
-      color: #ffffff;
-      line-height: 1.6;
+    .navbar {
+        justify-content: center;
     }
 
-    /* NAVIGATION */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      height: 72px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 7%;
-      background: rgba(7, 9, 13, 0.95);
-      border-bottom: 1px solid #20252d;
-      backdrop-filter: blur(12px);
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-
-    .logo span {
-      color: #00e676;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 30px;
-    }
-
-    nav a {
-      color: #b9c0ca;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #00e676;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 650px;
-      display: flex;
-      align-items: center;
-      padding: 90px 7%;
-      position: relative;
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 80% 25%,
-          rgba(0, 230, 118, 0.17),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 20% 80%,
-          rgba(0, 230, 118, 0.08),
-          transparent 35%
-        ),
-        #07090d;
-    }
-
-    .hero-content {
-      max-width: 800px;
-    }
-
-    .tag {
-      display: inline-block;
-      color: #00e676;
-      border: 1px solid #00e676;
-      padding: 7px 15px;
-      border-radius: 30px;
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 {
-      font-size: clamp(60px, 12vw, 135px);
-      line-height: 0.88;
-      font-weight: 900;
-      letter-spacing: -6px;
-    }
-
-    .hero h1 span {
-      color: #00e676;
-    }
-
-    .hero p {
-      color: #aab1bc;
-      font-size: 18px;
-      max-width: 570px;
-      margin: 30px 0;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 25px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      transition: 0.3s;
-    }
-
-    .primary {
-      background: #00e676;
-      color: #06100a;
-    }
-
-    .primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(0, 230, 118, 0.25);
-    }
-
-    .secondary {
-      border: 1px solid #343a45;
-      color: white;
-    }
-
-    .secondary:hover {
-      border-color: #00e676;
-      color: #00e676;
-    }
-
-    /* STATS */
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid #20252d;
-      border-bottom: 1px solid #20252d;
-      background: #0c0f14;
-    }
-
-    .stat {
-      text-align: center;
-      padding: 35px 15px;
-      border-right: 1px solid #20252d;
-    }
-
-    .stat:last-child {
-      border-right: none;
-    }
-
-    .stat h2 {
-      color: #00e676;
-      font-size: 38px;
-    }
-
-    .stat p {
-      color: #858d99;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* GENERAL SECTIONS */
-
-    section {
-      padding: 90px 7%;
-    }
-
-    .section-title {
-      margin-bottom: 50px;
-    }
-
-    .section-title small {
-      color: #00e676;
-      font-weight: bold;
-      letter-spacing: 3px;
-    }
-
-    .section-title h2 {
-      font-size: 48px;
-      margin-top: 8px;
-    }
-
-    .section-title p {
-      color: #858d99;
-      margin-top: 10px;
-    }
-
-    /* SQUAD */
-
-    .position {
-      margin-bottom: 60px;
-    }
-
-    .position-title {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .position-title h3 {
-      font-size: 21px;
-      white-space: nowrap;
-    }
-
-    .line {
-      height: 1px;
-      background: #242a33;
-      flex: 1;
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .players {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .player {
-      background: linear-gradient(
-        145deg,
-        #11151c,
-        #0a0d12
-      );
-
-      border: 1px solid #202630;
-      border-radius: 14px;
-      padding: 30px;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      position: relative;
-      overflow: hidden;
-
-      transition: 0.3s;
-    }
-
-    .player::after {
-      content: "";
-      position: absolute;
-
-      width: 120px;
-      height: 120px;
-
-      right: -40px;
-      bottom: -50px;
-
-      background: #00e676;
-      opacity: 0.06;
-
-      border-radius: 50%;
-    }
-
-    .player:hover {
-      transform: translateY(-5px);
-      border-color: #00e676;
-    }
-
-    .player-info h4 {
-      font-size: 24px;
-    }
-
-    .player-info p {
-      color: #00e676;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-top: 5px;
-    }
-
-    .player-number {
-      font-size: 46px;
-      font-weight: 900;
-      color: #202630;
-    }
-
-    /* ABOUT */
-
-    .about {
-      background: #0c0f14;
-    }
-
-    .about-box {
-      max-width: 850px;
-    }
-
-    .about-box p {
-      color: #aeb5bf;
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 45px 7%;
-      border-top: 1px solid #20252d;
-      background: #05070a;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    footer strong {
-      letter-spacing: 2px;
-    }
-
-    footer p {
-      color: #626a76;
-      font-size: 13px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 700px) {
-
-      nav {
-        padding: 0 5%;
-      }
-
-      nav ul {
-        gap: 15px;
-      }
-
-      nav a {
-        font-size: 10px;
-      }
-
-      .hero {
-        min-height: 570px;
-        padding: 70px 5%;
-      }
-
-      .hero h1 {
-        font-size: 67px;
-        letter-spacing: -4px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .stats {
         grid-template-columns: 1fr;
-      }
+    }
 
-      .stat {
-        border-right: none;
-        border-bottom: 1px solid #20252d;
-      }
-
-      .stat:last-child {
-        border-bottom: none;
-      }
-
-      section {
-        padding: 65px 5%;
-      }
-
-      .section-title h2 {
-        font-size: 38px;
-      }
-
-      .players {
+    .club-grid {
         grid-template-columns: 1fr;
-      }
+    }
 
-      .player {
-        padding: 25px;
-      }
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
 
-      footer {
+    .match {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .footer-inner {
         flex-direction: column;
         text-align: center;
-      }
     }
-  </style>
-</head>
 
-<body>
+    section {
+        padding: 75px 18px;
+    }
+}
+</style></head><body><!-- NAVIGATION --><header>
+    <nav class="navbar">
+        <div class="logo">LUCENT<span>FC</span></div>    <ul class="nav-links">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#squad">SQUAD</a></li>
+        <li><a href="#club">CLUB</a></li>
+        <li><a href="#fixtures">FIXTURES</a></li>
+        <li><a href="#news">NEWS</a></li>
+    </ul>
+</nav>
 
-  <!-- NAVIGATION -->
+</header><!-- HERO --><section class="hero" id="home"><div class="hero-content">
 
-  <nav>
-
-    <div class="logo">
-      LUCENT<span>FC</span>
+    <div class="badge">
+        EST. 2026 • FOOTBALL CLUB
     </div>
 
-    <ul>
-      <li>
-        <a href="#home">HOME</a>
-      </li>
-
-      <li>
-        <a href="#squad">SQUAD</a>
-      </li>
-
-      <li>
-        <a href="#about">CLUB</a>
-      </li>
-    </ul>
-
-  </nav>
-
-
-  <!-- HERO -->
-
-  <header class="hero" id="home">
-
-    <div class="hero-content">
-
-      <div class="tag">
-        EST. 2026 • FOOTBALL CLUB
-      </div>
-
-      <h1>
+    <h1>
         LUCENT<br>
         <span>FC.</span>
-      </h1>
+    </h1>
 
-      <p>
-        More than a team. A club built on ambition,
-        teamwork, discipline and the desire to win together.
-      </p>
+    <p>
+        More than a team. A football identity built on
+        discipline, ambition, teamwork and the desire to compete.
+    </p>
 
-      <div class="buttons">
-
-        <a
-          href="#squad"
-          class="btn primary"
-        >
-          MEET THE SQUAD
+    <div class="buttons">
+        <a href="#squad" class="btn btn-primary">
+            MEET THE SQUAD
         </a>
 
-        <a
-          href="#about"
-          class="btn secondary"
-        >
-          ABOUT THE CLUB
+        <a href="#club" class="btn btn-secondary">
+            OUR CLUB
         </a>
+    </div>
 
-      </div>
+</div>
+
+</section><!-- STATS --><section class="stats"><div class="container">
+
+    <div class="stats-grid">
+
+        <div class="stat">
+            <h3>06</h3>
+            <p>SQUAD PLAYERS</p>
+        </div>
+
+        <div class="stat">
+            <h3>03</h3>
+            <p>POSITIONS</p>
+        </div>
+
+        <div class="stat">
+            <h3>01</h3>
+            <p>CLUB</p>
+        </div>
+
+        <div class="stat">
+            <h3>2026</h3>
+            <p>ESTABLISHED</p>
+        </div>
 
     </div>
 
-  </header>
+</div>
 
-
-  <!-- STATS -->
-
-  <div class="stats">
-
-    <div class="stat">
-
-      <h2>06</h2>
-
-      <p>
-        First Team Players
-      </p>
-
-    </div>
-
-
-    <div class="stat">
-
-      <h2>03</h2>
-
-      <p>
-        Positions
-      </p>
-
-    </div>
-
-
-    <div class="stat">
-
-      <h2>01</h2>
-
-      <p>
-        Club
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <!-- SQUAD -->
-
-  <section id="squad">
+</section><!-- SQUAD --><section class="squad" id="squad"><div class="container">
 
     <div class="section-title">
-
-      <small>
-        THE TEAM
-      </small>
-
-      <h2>
-        FIRST TEAM
-      </h2>
-
-      <p>
-        Meet the players representing LUCENT FC.
-      </p>
-
+        <small>THE TEAM</small>
+        <h2>FIRST TEAM</h2>
+        <p>The players representing the LUCENT FC identity.</p>
     </div>
 
 
@@ -545,61 +605,28 @@
 
     <div class="position">
 
-      <div class="position-title">
-
-        <h3>
-          STRIKERS
-        </h3>
-
-        <div class="line"></div>
-
-      </div>
-
-
-      <div class="players">
-
-        <div class="player">
-
-          <div class="player-info">
-
-            <h4>
-              Zarak
-            </h4>
-
-            <p>
-              Striker
-            </p>
-
-          </div>
-
-          <div class="player-number">
-            09
-          </div>
-
+        <div class="position-title">
+            <h3>STRIKERS</h3>
+            <span>ATTACK</span>
         </div>
 
+        <div class="players">
 
-        <div class="player">
+            <div class="player">
+                <div class="player-role">FORWARD</div>
+                <h4>Zarak</h4>
+                <p>Striker • #09</p>
+                <div class="player-number">09</div>
+            </div>
 
-          <div class="player-info">
-
-            <h4>
-              Imaad
-            </h4>
-
-            <p>
-              Striker
-            </p>
-
-          </div>
-
-          <div class="player-number">
-            10
-          </div>
+            <div class="player">
+                <div class="player-role">FORWARD</div>
+                <h4>Imaad</h4>
+                <p>Striker • #10</p>
+                <div class="player-number">10</div>
+            </div>
 
         </div>
-
-      </div>
 
     </div>
 
@@ -608,61 +635,28 @@
 
     <div class="position">
 
-      <div class="position-title">
-
-        <h3>
-          DEFENDERS
-        </h3>
-
-        <div class="line"></div>
-
-      </div>
-
-
-      <div class="players">
-
-        <div class="player">
-
-          <div class="player-info">
-
-            <h4>
-              Zalan
-            </h4>
-
-            <p>
-              Defender
-            </p>
-
-          </div>
-
-          <div class="player-number">
-            04
-          </div>
-
+        <div class="position-title">
+            <h3>DEFENDERS</h3>
+            <span>DEFENCE</span>
         </div>
 
+        <div class="players">
 
-        <div class="player">
+            <div class="player">
+                <div class="player-role">DEFENDER</div>
+                <h4>Zalan</h4>
+                <p>Defender • #04</p>
+                <div class="player-number">04</div>
+            </div>
 
-          <div class="player-info">
-
-            <h4>
-              Uzair
-            </h4>
-
-            <p>
-              Defender
-            </p>
-
-          </div>
-
-          <div class="player-number">
-            05
-          </div>
+            <div class="player">
+                <div class="player-role">DEFENDER</div>
+                <h4>Uzair</h4>
+                <p>Defender • #05</p>
+                <div class="player-number">05</div>
+            </div>
 
         </div>
-
-      </div>
 
     </div>
 
@@ -671,118 +665,202 @@
 
     <div class="position">
 
-      <div class="position-title">
-
-        <h3>
-          GOALKEEPERS
-        </h3>
-
-        <div class="line"></div>
-
-      </div>
-
-
-      <div class="players">
-
-        <div class="player">
-
-          <div class="player-info">
-
-            <h4>
-              Abdullah
-            </h4>
-
-            <p>
-              Goalkeeper
-            </p>
-
-          </div>
-
-          <div class="player-number">
-            01
-          </div>
-
+        <div class="position-title">
+            <h3>GOALKEEPERS</h3>
+            <span>LAST LINE</span>
         </div>
 
+        <div class="players">
 
-        <div class="player">
+            <div class="player">
+                <div class="player-role">GOALKEEPER</div>
+                <h4>Abdullah</h4>
+                <p>Goalkeeper • #01</p>
+                <div class="player-number">01</div>
+            </div>
 
-          <div class="player-info">
-
-            <h4>
-              Zakriya
-            </h4>
-
-            <p>
-              Goalkeeper
-            </p>
-
-          </div>
-
-          <div class="player-number">
-            12
-          </div>
+            <div class="player">
+                <div class="player-role">GOALKEEPER</div>
+                <h4>Zakriya</h4>
+                <p>Goalkeeper • #12</p>
+                <div class="player-number">12</div>
+            </div>
 
         </div>
-
-      </div>
 
     </div>
 
-  </section>
+</div>
 
-
-  <!-- ABOUT -->
-
-  <section
-    class="about"
-    id="about"
-  >
+</section><!-- CLUB --><section class="club" id="club"><div class="container">
 
     <div class="section-title">
+        <small>WHO WE ARE</small>
+        <h2>THE CLUB</h2>
+    </div>
 
-      <small>
-        THE CLUB
-      </small>
+    <div class="club-grid">
 
-      <h2>
-        BUILT TOGETHER.
-      </h2>
+        <div class="club-text">
+
+            <p>
+                LUCENT FC is built around one simple idea:
+                football is about more than individual talent.
+            </p>
+
+            <p>
+                Every player has a role. Every match is an opportunity.
+                Every challenge is part of the journey.
+            </p>
+
+            <p>
+                We play with discipline, energy and respect for the game.
+            </p>
+
+        </div>
+
+        <div class="club-box">
+
+            <h3>LUCENT FC VALUES</h3>
+
+            <ul class="club-list">
+                <li>01 — Teamwork</li>
+                <li>02 — Discipline</li>
+                <li>03 — Respect</li>
+                <li>04 — Ambition</li>
+                <li>05 — Consistency</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section><!-- FIXTURES --><section class="fixtures" id="fixtures"><div class="container">
+
+    <div class="section-title">
+        <small>MATCH CENTRE</small>
+        <h2>FIXTURES</h2>
+        <p>Upcoming LUCENT FC matches.</p>
+    </div>
+
+
+    <div class="match">
+
+        <div class="match-date">
+            UPCOMING
+        </div>
+
+        <div class="match-teams">
+            LUCENT FC
+            <span> VS </span>
+            OPPONENT
+        </div>
+
+        <div class="match-status">
+            TO BE ANNOUNCED
+        </div>
 
     </div>
 
 
-    <div class="about-box">
+    <div class="match">
 
-      <p>
-        LUCENT FC is a football club driven by
-        teamwork, discipline and ambition.
-      </p>
+        <div class="match-date">
+            UPCOMING
+        </div>
 
-      <p>
-        Every player has a role. Every match is
-        an opportunity. Together, we represent
-        the spirit of LUCENT FC.
-      </p>
+        <div class="match-teams">
+            LUCENT FC
+            <span> VS </span>
+            OPPONENT
+        </div>
+
+        <div class="match-status">
+            TO BE ANNOUNCED
+        </div>
 
     </div>
 
-  </section>
+</div>
+
+</section><!-- NEWS --><section class="news" id="news"><div class="container">
+
+    <div class="section-title">
+        <small>FROM THE CLUB</small>
+        <h2>LATEST NEWS</h2>
+    </div>
 
 
-  <!-- FOOTER -->
+    <div class="news-grid">
 
-  <footer>
+        <article class="news-card">
 
-    <strong>
-      LUCENT FC
-    </strong>
+            <small>CLUB</small>
+
+            <h3>LUCENT FC Begins a New Chapter</h3>
+
+            <p>
+                A new football identity begins with ambition,
+                teamwork and a commitment to the game.
+            </p>
+
+        </article>
+
+
+        <article class="news-card">
+
+            <small>SQUAD</small>
+
+            <h3>Meet the First Team</h3>
+
+            <p>
+                Six players form the current LUCENT FC squad
+                across attack, defence and goalkeeping.
+            </p>
+
+        </article>
+
+
+        <article class="news-card">
+
+            <small>FOOTBALL</small>
+
+            <h3>Built for the Next Match</h3>
+
+            <p>
+                Preparation continues as the squad looks
+                forward to future fixtures.
+            </p>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section><!-- CALL TO ACTION --><section class="cta"><h2>THIS IS LUCENT.</h2>
+
+<p>
+    One club. One identity. One team.
+</p>
+
+<a href="#home" class="btn btn-primary">
+    BACK TO TOP
+</a>
+
+</section><!-- FOOTER --><footer><div class="footer-inner">
+
+    <div class="footer-logo">
+        LUCENT<span>FC</span>
+    </div>
 
     <p>
-      © 2026 LUCENT FC. All rights reserved.
+       N I © 2026 LUCENT FC. All rights reserved.
     </p>
 
-  </footer>
+</div>
 
-</body>
+</footer></body>
 </html>
